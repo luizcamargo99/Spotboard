@@ -1,0 +1,11 @@
+﻿
+#main-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5rem;
+    margin-top: 4rem;
+    text-align: center;
+}

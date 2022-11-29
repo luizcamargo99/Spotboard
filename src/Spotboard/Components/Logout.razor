@@ -1,4 +1,6 @@
-﻿<button @onclick="LogoutAsync">Logout</button>
+﻿<SpotifyButton OnClick="async () => { await LogoutAsync(); }">
+    LOG OUT
+</SpotifyButton>
 
 @code {
 

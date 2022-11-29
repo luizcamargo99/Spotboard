@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Components\Loading.razor.css" />
+    <None Remove="Components\MainContent.razor.css" />
   </ItemGroup>
 
   <ItemGroup>

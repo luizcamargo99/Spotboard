@@ -1,5 +1,6 @@
-﻿@page "/callback"
+﻿@page "/home"
 @inherits BasePage
+
 
 @if (IsLoading)
 {
@@ -7,11 +8,19 @@
 }
 else if (_userProfile is not null)
 {
-    <div>
-        <p>@(_userProfile.DisplayName)</p>
-    </div>
+    <MainContent>
+        <Aside>
+            <h1>Hey, @(_userProfile.DisplayName)!</h1>
+            <h2>Customize your Hot 100</h2>
+            <Logout />
+        </Aside>
 
-    <Logout />
+        <div>
+            <img src="images/sample.png" id="sample" />
+        </div>
+    </MainContent>
+
+ 
 }
 
 @code {

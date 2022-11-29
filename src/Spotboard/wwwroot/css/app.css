@@ -1,14 +1,63 @@
+@font-face {
+    font-family: spotboard;
+    src: url(../fonts/brigade_2.ttf);
+}
+
 * {
     margin: 0;
     padding: 0;
 }
 
 html, body {
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
-    color: #24282F;
+    font-family: spotboard;
+    letter-spacing: .1rem;
+    color: #fff;
     scroll-behavior: smooth !important;
     height: 100% !important;
     position: relative;
+    background: #0c0c0c;  
+}
+
+header {
+    width: 100%;
+    height: 5rem;   
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+    background: #121212;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+footer {
+    background: red;
+    height: 5rem;
+    width: 100%;
+    background: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: underline;
+    color: #fff;
+}
+
+#sample {
+    width: 35%;
+}
+
+h1 {
+    font-size: 3rem;
 }
 
 h1:focus {
