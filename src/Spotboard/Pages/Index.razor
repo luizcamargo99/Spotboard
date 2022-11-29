@@ -1,10 +1,11 @@
 ﻿@page "/"
+@inherits BasePage
 
 <button @onclick="Authorize">AUTORIZAR</button>
 
 @code {
 
-    async void Authorize()
+    void Authorize()
     {
         spotifyService.Authorize();
     }

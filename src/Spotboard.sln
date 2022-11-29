@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spotboard", "MyLineFy\Spotboard.csproj", "{E5638478-DD6A-4DCC-AE62-A60198F71722}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spotboard", "Spotboard\Spotboard.csproj", "{3D04CB73-1C14-42F8-A07D-297083F6F5FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E5638478-DD6A-4DCC-AE62-A60198F71722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5638478-DD6A-4DCC-AE62-A60198F71722}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5638478-DD6A-4DCC-AE62-A60198F71722}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5638478-DD6A-4DCC-AE62-A60198F71722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D04CB73-1C14-42F8-A07D-297083F6F5FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D04CB73-1C14-42F8-A07D-297083F6F5FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D04CB73-1C14-42F8-A07D-297083F6F5FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D04CB73-1C14-42F8-A07D-297083F6F5FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

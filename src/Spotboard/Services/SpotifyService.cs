@@ -66,7 +66,7 @@ public class SpotifyService : ISpotifyService
         _httpService.SetHeader("Basic", secret.ToBase64String());
 
         List<KeyValuePair<string, string>> requestData = new();
-        requestData.Add(new ("grant_type", "authorization_code"));
+        requestData.Add(new ("grant_type", EGrantType.AuthorizationCode.ToDescription()));
         requestData.Add(new("code", code));
         requestData.Add(new("redirect_uri", UrlConstant.RedirectUri));
 

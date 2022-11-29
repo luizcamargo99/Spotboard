@@ -1,6 +1,11 @@
 ﻿@page "/callback"
+@inherits BasePage
 
-@if (_userProfile is not null)
+@if (IsLoading)
+{
+    <Loading />
+}
+else if (_userProfile is not null)
 {
     <div>
         <p>@(_userProfile.DisplayName)</p>
@@ -8,7 +13,6 @@
 
     <Logout />
 }
-
 
 @code {
     UserProfile? _userProfile { get; set; }
