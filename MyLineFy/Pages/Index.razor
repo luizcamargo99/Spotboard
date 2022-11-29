@@ -1,0 +1,12 @@
+﻿@page "/"
+
+<button @onclick="Authorize">AUTORIZAR</button>
+
+@code {
+
+    async void Authorize()
+    {
+        spotifyService.Authorize();
+    }
+
+}

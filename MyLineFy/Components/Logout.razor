@@ -1,0 +1,10 @@
+﻿<button @onclick="LogoutAsync">Logout</button>
+
+@code {
+
+    async Task LogoutAsync()
+    {
+        await authRepository.SaveAsync(null);
+        navigationManager.NavigateTo("/", replace: true);
+    }
+}

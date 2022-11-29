@@ -1,0 +1,35 @@
+﻿@page "/callback"
+
+@if (_userProfile is not null)
+{
+    <div>
+        <p>@(_userProfile.DisplayName)</p>
+    </div>
+
+    <Logout />
+}
+
+
+@code {
+    UserProfile? _userProfile { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var code = spotifyService.GetAuthCode();
+
+        if (string.IsNullOrEmpty(code) == false)
+        {
+            await spotifyService.GenerateTokenAsync(code);
+        }
+
+        var authModel = await authRepository.GetAsync();
+
+        if (authModel is null)
+        {
+            navigationManager.NavigateTo("/", forceLoad: true, replace: true);
+            return;
+        }
+
+        _userProfile = await spotifyService.GetUserProfileAsync();
+    }
+}
