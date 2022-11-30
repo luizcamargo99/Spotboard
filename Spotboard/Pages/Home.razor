@@ -28,7 +28,11 @@ else if (_topItemsResponse is not null)
         </Aside>
 
         <MyHot100 TopItems="@_topItemsResponse.Items" Name="@(_userProfile.DisplayName)" Id="@_idSample" />
+
+     @*   <canvas id="canvas-img"></canvas>*@
     </MainContent>
+
+  
 }
 
 @code {
@@ -76,5 +80,6 @@ else if (_topItemsResponse is not null)
     async Task SaveImageAsync()
     {
         await screenshot.DownloadScreenshot(_idSample, "myhot100");
+        //await screenshot.CreateImageByElement(_idSample, "canvas-img");
     }
 }

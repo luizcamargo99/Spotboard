@@ -7,6 +7,12 @@
     flex-wrap: wrap;
     flex-direction: column;
     position: relative;
+    width: fit-content;
+    /*  width: 40vh;
+    height: 40vh;*/
+    scale: 1.4;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0;
 }
 
 .sample {
@@ -31,8 +37,6 @@
     flex-direction: column;
     width: 80%;
     text-align: left;
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 0;
 }
 
 

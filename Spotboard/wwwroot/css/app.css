@@ -10,7 +10,7 @@
 
 html, body {
     font-family: spotboard;
-    letter-spacing: .1rem;
+    letter-spacing: .1vh;
     color: #fff;
     scroll-behavior: smooth !important;
     height: 100% !important;
@@ -60,6 +60,7 @@ a {
 
 .example {
     width: 40vh;
+    scale: 1.4;
 }
 
 h1 {
