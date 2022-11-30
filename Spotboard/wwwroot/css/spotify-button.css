@@ -1,21 +1,22 @@
 ﻿
 .spotify-btn {
     background: #16A34A;
-    padding: .7rem;
-    border-radius: 2rem;
+    padding: 1vh;
+    border-radius: 10vh;
     color: #fff;
     font-weight: bold;
-    width: 15rem;
-    font-size: .95rem;
+    width: 30vh;
+    font-size: 2vh;
+    border: none;
 }
 
 .spotify-btn-sec {
     background: transparent;
-    padding: .7rem;
-    border-radius: 2rem;
+    padding: 1vh;
+    border-radius: 10vh;
     color: #16A34A;
     font-weight: bold;
-    width: 15rem;
-    font-size: .95rem;
+    width: 30vh;
+    font-size: 2vh;
     border: .1rem solid #16A34A;
 }

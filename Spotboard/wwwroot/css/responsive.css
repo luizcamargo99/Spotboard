@@ -1,41 +1,13 @@
-@media(max-width: 1100px) {
-    #sample {
-        width: 50%;
+
+@media (max-width: 700px) {
+
+    .top-item span {
+        font-size: 1vh !important;
     }
 }
 
-
-@media(max-width: 700px) {
-    #sample {
-        width: 70%;
+@media (max-width: 500px) {
+    .top-item span {
+        font-size: .8vh !important;
     }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-/*    .sample {
-        width: 25rem !important;
-        height: 25rem !important;
-    }
-
-    .top-items {
-        gap: 0.1rem;
-        top: 8.25rem !important;
-        font-size: 0.75rem !important;
-    }
-
-    .top-item {
-        height: 1.5rem !important;
-    }
-
-    .track-name {
-        width: 8rem !important;
-        min-width: 8rem !important;
-    }
-
-    .footer-name {
-        top: 24.1rem !important;
-        font-size: .65rem !important;
-    }*/
 }
