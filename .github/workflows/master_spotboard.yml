@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'spotboard'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7CDEE54F975640C5B30FF1009C3FFAF9 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C443828F8694425EA0C21C3FE778DE52 }}
           package: .
