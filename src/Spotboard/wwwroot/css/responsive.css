@@ -13,4 +13,29 @@
     h1 {
         font-size: 2rem;
     }
+
+/*    .sample {
+        width: 25rem !important;
+        height: 25rem !important;
+    }
+
+    .top-items {
+        gap: 0.1rem;
+        top: 8.25rem !important;
+        font-size: 0.75rem !important;
+    }
+
+    .top-item {
+        height: 1.5rem !important;
+    }
+
+    .track-name {
+        width: 8rem !important;
+        min-width: 8rem !important;
+    }
+
+    .footer-name {
+        top: 24.1rem !important;
+        font-size: .65rem !important;
+    }*/
 }

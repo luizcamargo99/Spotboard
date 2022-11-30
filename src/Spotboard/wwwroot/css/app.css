@@ -35,6 +35,7 @@ main {
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
+    gap: 3rem;
 }
 
 footer {
@@ -58,6 +59,10 @@ a {
 
 h1 {
     font-size: 3rem;
+}
+
+button {
+    cursor: pointer;
 }
 
 h1:focus {
@@ -93,33 +98,3 @@ h1:focus {
         content: "An error has occurred."
     }
 
-
-#test {
-    position: absolute;
-    margin-top: 40.6rem;
-    font-size: .8rem;
-    margin-left: -1rem;
-}
-
-.opa {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    position: relative;
-}
-
-.sample {
-    width: 30rem;
-    height: 30rem;
-}
-
-.name {
-    position: absolute;
-    left: 6.5rem;
-    top: 29.15rem;
-    font-size: .6rem !important;
-    color: #a7a7a7 !important;
-}

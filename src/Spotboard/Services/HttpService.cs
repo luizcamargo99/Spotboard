@@ -12,6 +12,8 @@ internal class HttpService : IHttpService
     private HttpClient _httpClient { get; set; } = new HttpClient();
     public bool IsLoading { get; private set; }
 
+    public event EventHandler? UnauthorizedStatus;
+
     public async Task<T> RequestAsync<T>(Func<Task<HttpResponseMessage>> requestAction)
     {
         var result = new HttpResponseMessage();
@@ -24,7 +26,8 @@ internal class HttpService : IHttpService
 
             if (result.StatusCode == HttpStatusCode.Unauthorized)
             {
-                //
+                UnauthorizedStatus?.Invoke(requestAction, EventArgs.Empty);
+                return default(T);
             }
         }
         catch (Exception ex)

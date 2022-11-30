@@ -4,14 +4,22 @@
 
 @if (IsLoading)
 {
-    <Loading />
+    <div style="display: flex;
+    flex-direction: column;
+    align-items: center;">
+        <h2>GENERATING YOUR HOT 100 | TOP 10</h2>
+        <Loading />
+    </div>
 }
-else if (_userProfile is not null)
+else if (_topItemsResponse is not null)
 {
     <MainContent>
         <Aside>
             <h1>Hey, @(_userProfile.DisplayName)!</h1>
-            <h2>Customize your Hot 100</h2>
+            <h2>
+                Here's your Top 10 for the last month
+            </h2>
+
             <SpotifyButton OnClick="async () => { await SaveImageAsync(); }">
                 SAVE IMAGE
             </SpotifyButton>
@@ -19,27 +27,35 @@ else if (_userProfile is not null)
             <Logout />
         </Aside>
 
-        <MyHot100 Name="@(_userProfile.DisplayName)" Id="@_idSample" />
+        <MyHot100 TopItems="@_topItemsResponse.Items" Name="@(_userProfile.DisplayName)" Id="@_idSample" />
     </MainContent>
-
- 
 }
 
 @code {
     UserProfile? _userProfile { get; set; }
-
+    EItemType _defaultType { get; set; } = EItemType.Tracks;
+    ETimeRange _defaultTimeRange { get; set; } = ETimeRange.ShortTerm;
+    TopItemsResponse _topItemsResponse { get; set; }
     const string _idSample = "myhot100";
 
     protected override async Task OnInitializedAsync()
     {
         var code = spotifyService.GetAuthCode();
-
-        if (string.IsNullOrEmpty(code) == false)
-        {
-            await spotifyService.GenerateTokenAsync(code);
-        }
-
         var authModel = await authRepository.GetAsync();
+
+        if (string.IsNullOrEmpty(code) == false && authModel is null)
+        {
+            authModel = await spotifyService.GenerateTokenAsync(code);
+
+            if (authModel is not null && authModel.AccessToken is not null)
+            {
+                await authRepository.SaveAsync(authModel);
+            }
+            else
+            {
+                authModel = null;
+            }
+        }
 
         if (authModel is null)
         {
@@ -48,6 +64,13 @@ else if (_userProfile is not null)
         }
 
         _userProfile = await spotifyService.GetUserProfileAsync();
+
+        await GenerateImageAsync();
+    }
+
+    async Task GenerateImageAsync()
+    {
+        _topItemsResponse = await spotifyService.GetTopItemsAsync(itemType: _defaultType, timeRange: _defaultTimeRange, limit: 10);
     }
 
     async Task SaveImageAsync()

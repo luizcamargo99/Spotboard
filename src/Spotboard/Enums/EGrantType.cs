@@ -5,5 +5,7 @@ namespace Spotboard.Enums;
 public enum EGrantType
 {
     [Description("authorization_code")]
-    AuthorizationCode
+    AuthorizationCode,
+    [Description("refresh_token")]
+    RefreshToken
 }

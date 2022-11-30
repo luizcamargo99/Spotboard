@@ -23,6 +23,7 @@ public class SpotifyService : ISpotifyService
         _httpService = httpService;
         _navigationManager = navigationManager;
         _authRepository = authRepository;
+        _httpService.UnauthorizedStatus += UnauthorizedEvent;
     }
 
     public void Authorize()
@@ -53,29 +54,22 @@ public class SpotifyService : ISpotifyService
         return null;
     }
 
-    public async Task GenerateTokenAsync(string code)
+    public async Task<AuthorizationResponse?> GenerateTokenAsync(string code)
     {
         var authModel = await _authRepository.GetAsync();
 
         if (authModel is not null)
         {
-            return;
+            return authModel;
         }
 
         var secret = string.Concat(_clientId, ":", _clientSecret);
         _httpService.SetHeader("Basic", secret.ToBase64String());
-
         List<KeyValuePair<string, string>> requestData = new();
-        requestData.Add(new ("grant_type", EGrantType.AuthorizationCode.ToDescription()));
+        requestData.Add(new("grant_type", EGrantType.AuthorizationCode.ToDescription()));
         requestData.Add(new("code", code));
         requestData.Add(new("redirect_uri", UrlConstant.RedirectUri));
-
-        var response = await _httpService.RequestAsync<AuthorizationResponse>(() => _httpService.PostAsync(string.Concat(UrlConstant.AuthBaseUri, UrlConstant.GetTokenEndpoint), new FormUrlEncodedContent(requestData)));
-        
-        if (response is not null)
-        {
-            await _authRepository.SaveAsync(response);
-        }
+        return await _httpService.RequestAsync<AuthorizationResponse?>(() => _httpService.PostAsync(string.Concat(UrlConstant.AuthBaseUri, UrlConstant.GetTokenEndpoint), new FormUrlEncodedContent(requestData)));
     }
 
     public async Task<UserProfile> GetUserProfileAsync()
@@ -89,6 +83,21 @@ public class SpotifyService : ISpotifyService
         }
 
         _httpService.SetHeader("Bearer", authModel.AccessToken);
-        return await _httpService.RequestAsync<UserProfile>(() => _httpService.GetAsync(string.Concat(UrlConstant.APIBaseUri, UrlConstant.GetUserProfileEndpoint)));
+        return await _httpService.RequestAsync<UserProfile?>(() => _httpService.GetAsync(string.Concat(UrlConstant.APIBaseUri, UrlConstant.GetUserProfileEndpoint)));
+    }
+
+    private void UnauthorizedEvent(object? sender, EventArgs args)
+    {
+        Task.Delay(1).ContinueWith(async (x) =>
+        {
+            await _authRepository.SaveAsync(null);
+            _navigationManager.NavigateTo("/", forceLoad: true, replace: true);
+        });
+    }
+
+    public async Task<TopItemsResponse> GetTopItemsAsync(EItemType itemType, ETimeRange timeRange, int? limit = 10)
+    {
+        string query = $"?time_range={timeRange.ToDescription()}&limit={limit}";
+        return await _httpService.RequestAsync<TopItemsResponse?>(() => _httpService.GetAsync(string.Concat(UrlConstant.APIBaseUri, UrlConstant.GetUserTopItemsEndpoint, $"/{itemType.ToDescription()}"), query));
     }
 }

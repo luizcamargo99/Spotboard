@@ -8,3 +8,14 @@
     width: 15rem;
     font-size: .95rem;
 }
+
+.spotify-btn-sec {
+    background: transparent;
+    padding: .7rem;
+    border-radius: 2rem;
+    color: #16A34A;
+    font-weight: bold;
+    width: 15rem;
+    font-size: .95rem;
+    border: .1rem solid #16A34A;
+}

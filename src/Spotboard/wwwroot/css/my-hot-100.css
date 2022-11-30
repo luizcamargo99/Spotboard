@@ -1,0 +1,53 @@
+﻿
+.my-hot-100 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: relative;
+}
+
+.sample {
+    width: 30rem;
+    height: 30rem;
+}
+
+.footer-name {
+    position: absolute;
+    left: 1.5rem;
+    top: 29rem;
+    font-size: .7rem !important;
+    color: #a7a7a7 !important;
+}
+
+.top-items {
+    color: #000;
+    position: absolute;
+    display: flex;
+    gap: 0.1rem;
+    z-index: 10000;
+    top: 9.9rem;
+    flex-direction: column;
+    width: 80%;
+    font-size: 0.8rem;
+    text-align: left;
+}
+
+.top-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    height: 1.8rem;
+    align-items: center;
+    padding-left: 0.1rem;
+}
+
+.track-name {
+    width: 10rem;
+    font-weight: bolder;
+    display: flex;
+    min-width: 10rem;
+}

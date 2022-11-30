@@ -1,11 +1,26 @@
 ﻿
-<div id="@Id" class="opa">
-    <img src="/images/sample.png" class="sample"  />
-    <div class="name">@Name</div>
+<div id="@Id" class="my-hot-100">
+    <img src="/images/sample.png" class="sample" />
+
+    <div class="top-items">
+        @for (int i = 0; i < TopItems?.Count; i++)
+        {
+            var currentItem = TopItems[i];
+            <div class="top-item">
+                <span class="track-name">@currentItem.Name</span>
+                <span>@(string.Join(", ", currentItem.Artists.Select(x => x.Name)?.ToList()))</span>
+            </div>
+        }
+    </div>
+
+    <div class="footer-name">hot 100 | top 10 by @Name</div>
 </div>
 
 
 @code {
+    [Parameter]
+    public IList<Item>? TopItems { get; set; }
+
     [Parameter]
     public string? Name { get; set; }
 

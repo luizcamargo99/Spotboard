@@ -1,12 +1,4 @@
-﻿.content-loading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
-}
-
-.lds-facebook {
+﻿.lds-facebook {
     display: inline-block;
     position: relative;
     width: 80px;
