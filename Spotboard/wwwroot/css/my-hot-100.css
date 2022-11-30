@@ -8,8 +8,6 @@
     flex-direction: column;
     position: relative;
     width: fit-content;
-    /*  width: 40vh;
-    height: 40vh;*/
     scale: 1.4;
     font-family: Arial, Helvetica, sans-serif;
     letter-spacing: 0;
@@ -17,6 +15,12 @@
 
 .sample {
     width: 40vh;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
 .footer-name {

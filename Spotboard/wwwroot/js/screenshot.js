@@ -13,10 +13,7 @@ function downloadScreenshot(id, filename) {
     let element = document.getElementById(id);
     /* element.style.scale = 1;*/
 /*    let clone = hiddenClone(element);*/
-    html2canvas(element, {
-        scrollX: 0,
-        scrollY: 0
-    }).then(function (canvas) {
+    html2canvas(element).then(function (canvas) {
   /*      document.body.removeChild(clone);*/
         saveAs(canvas.toDataURL(), filename + '.png')
     });
