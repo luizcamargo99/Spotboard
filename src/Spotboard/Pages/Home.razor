@@ -12,12 +12,14 @@ else if (_userProfile is not null)
         <Aside>
             <h1>Hey, @(_userProfile.DisplayName)!</h1>
             <h2>Customize your Hot 100</h2>
+            <SpotifyButton OnClick="async () => { await SaveImageAsync(); }">
+                SAVE IMAGE
+            </SpotifyButton>
+
             <Logout />
         </Aside>
 
-        <div>
-            <img src="images/sample.png" id="sample" />
-        </div>
+        <MyHot100 Name="@(_userProfile.DisplayName)" Id="@_idSample" />
     </MainContent>
 
  
@@ -25,6 +27,8 @@ else if (_userProfile is not null)
 
 @code {
     UserProfile? _userProfile { get; set; }
+
+    const string _idSample = "myhot100";
 
     protected override async Task OnInitializedAsync()
     {
@@ -44,5 +48,10 @@ else if (_userProfile is not null)
         }
 
         _userProfile = await spotifyService.GetUserProfileAsync();
+    }
+
+    async Task SaveImageAsync()
+    {
+        await screenshot.DownloadScreenshot(_idSample, "myhot100");
     }
 }

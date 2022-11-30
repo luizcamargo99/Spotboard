@@ -1,0 +1,14 @@
+﻿
+<div id="@Id" class="opa">
+    <img src="/images/sample.png" class="sample"  />
+    <div class="name">@Name</div>
+</div>
+
+
+@code {
+    [Parameter]
+    public string? Name { get; set; }
+
+    [Parameter]
+    public string? Id { get; set; }
+}

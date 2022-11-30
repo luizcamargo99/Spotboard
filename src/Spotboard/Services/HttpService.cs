@@ -21,6 +21,11 @@ internal class HttpService : IHttpService
             IsLoading = true;
 
             result = await requestAction();
+
+            if (result.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                //
+            }
         }
         catch (Exception ex)
         {
