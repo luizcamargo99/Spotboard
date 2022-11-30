@@ -26,12 +26,4 @@
 
     [Parameter]
     public string? Id { get; set; }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        await Task.Delay(100).ContinueWith(async(x) =>
-        {
-            await screenshot.DownloadScreenshot(Id, "saassa");
-        });       
-    }
 }
