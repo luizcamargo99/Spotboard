@@ -37,7 +37,7 @@ public class SpotifyService : ISpotifyService
         builder.Append($"?response_type={EResponseType.Code.ToDescription()}");
         builder.Append($"&client_id={_spotifyKeys.ClientId}");
         builder.Append($"&scope={EAuthorizationScopes.UserReadPrivate.ToDescription()} {EAuthorizationScopes.UserReadEmail.ToDescription()} {EAuthorizationScopes.UserTopRead.ToDescription()}");
-        builder.Append($"&redirect_uri={UrlConstant.RedirectUri}");
+        builder.Append($"&redirect_uri={string.Concat(_navigationManager.BaseUri, UrlConstant.RedirectPath)}");
         builder.Append($"&state={new Random().Next(0, 1000000000)}");
         builder.Append("&show_dialog=true");
 
@@ -72,7 +72,7 @@ public class SpotifyService : ISpotifyService
         List<KeyValuePair<string, string>> requestData = new();
         requestData.Add(new("grant_type", EGrantType.AuthorizationCode.ToDescription()));
         requestData.Add(new("code", code));
-        requestData.Add(new("redirect_uri", UrlConstant.RedirectUri));
+        requestData.Add(new("redirect_uri", string.Concat(_navigationManager.BaseUri, UrlConstant.RedirectPath)));
         return await _httpService.RequestAsync<AuthorizationResponse?>(() => _httpService.PostAsync(string.Concat(UrlConstant.AuthBaseUri, UrlConstant.GetTokenEndpoint), new FormUrlEncodedContent(requestData)));
     }
 

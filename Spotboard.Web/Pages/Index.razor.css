@@ -1,0 +1,23 @@
+﻿
+@media (max-width: 650px) {
+
+    .example {
+        width: 30rem !important;
+    }
+}
+
+
+
+@media (max-width: 500px) {
+
+    .example {
+        width: 25rem !important;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .example {
+        width: 21rem !important;
+    }  
+}
