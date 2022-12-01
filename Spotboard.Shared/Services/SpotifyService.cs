@@ -1,21 +1,23 @@
 ﻿using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using Spotboard.Shared.Constants;
 using Spotboard.Shared.Data;
 using Spotboard.Shared.Enums;
 using Spotboard.Shared.Extensions;
 using Spotboard.Shared.Interfaces;
+using System.Reflection;
 using System.Text;
 
 namespace Spotboard.Shared.Services;
 
 public class SpotifyService : ISpotifyService
 {
-    private const string _clientId = "d31b5ace39af42a89bd0e76f0e892563";
-    private const string _clientSecret = "1c08d91398254851877e424b84081615";
     private readonly IHttpService _httpService;
     private readonly NavigationManager _navigationManager;
     private readonly IRepository<AuthorizationResponse> _authRepository;
+    private readonly SpotifyKeys _spotifyKeys;
 
     public SpotifyService(IHttpService httpService, NavigationManager navigationManager, IRepository<AuthorizationResponse> authRepository)
     {
@@ -23,6 +25,9 @@ public class SpotifyService : ISpotifyService
         _navigationManager = navigationManager;
         _authRepository = authRepository;
         _httpService.UnauthorizedStatus += UnauthorizedEvent;
+        var currentAssembly = Assembly.GetExecutingAssembly();
+        var streamReader = new StreamReader(currentAssembly.GetManifestResourceStream("Spotboard.Shared.appsettings.json"));
+        _spotifyKeys = JsonConvert.DeserializeObject<SpotifyKeys>(streamReader.ReadToEnd());
     }
 
     public void Authorize()
@@ -30,7 +35,7 @@ public class SpotifyService : ISpotifyService
         StringBuilder builder = new();
         builder.Append(string.Concat(UrlConstant.AuthBaseUri, UrlConstant.AuthorizeEndpoint));
         builder.Append($"?response_type={EResponseType.Code.ToDescription()}");
-        builder.Append($"&client_id={_clientId}");
+        builder.Append($"&client_id={_spotifyKeys.ClientId}");
         builder.Append($"&scope={EAuthorizationScopes.UserReadPrivate.ToDescription()} {EAuthorizationScopes.UserReadEmail.ToDescription()} {EAuthorizationScopes.UserTopRead.ToDescription()}");
         builder.Append($"&redirect_uri={UrlConstant.RedirectUri}");
         builder.Append($"&state={new Random().Next(0, 1000000000)}");
@@ -62,7 +67,7 @@ public class SpotifyService : ISpotifyService
             return authModel;
         }
 
-        var secret = string.Concat(_clientId, ":", _clientSecret);
+        var secret = string.Concat(_spotifyKeys.ClientId, ":", _spotifyKeys.ClientSecret);
         _httpService.SetHeader("Basic", secret.ToBase64String());
         List<KeyValuePair<string, string>> requestData = new();
         requestData.Add(new("grant_type", EGrantType.AuthorizationCode.ToDescription()));

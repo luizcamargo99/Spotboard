@@ -8,6 +8,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Remove="Properties\appSettings.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="wwwroot\images\example.png" />
 	  <None Remove="wwwroot\images\sample.png" />
 	</ItemGroup>
