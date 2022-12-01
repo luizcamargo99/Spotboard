@@ -1,0 +1,26 @@
+﻿<style>
+    footer {
+        height: 5rem;
+        width: 100%;
+        background: #121212;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+    }
+
+    a {
+        text-decoration: underline;
+        color: #fff;
+    }
+
+</style>
+
+<footer>
+    @ChildContent
+</footer>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

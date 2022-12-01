@@ -1,0 +1,22 @@
+﻿@page "/"
+@inherits BasePage
+
+<MainContent>
+
+    <img src="/images/example.png" class="example" />
+    <Aside>
+        <h1>Create your Spotify Hot 100</h1>
+        <h2>Sign in to get started.</h2>
+        <SpotifyButton OnClick="Authorize">
+            SIGN IN WITH SPOTIFY
+        </SpotifyButton>
+    </Aside>
+</MainContent>
+
+
+@code {
+    void Authorize()
+    {
+        spotifyService.Authorize();
+    }
+}
