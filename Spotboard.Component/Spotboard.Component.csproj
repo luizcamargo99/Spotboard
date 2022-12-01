@@ -7,11 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Aside.razor.css" />
+    <None Remove="Footer.razor.css" />
+    <None Remove="Header.razor.css" />
     <None Remove="Loading.razor.css" />
+    <None Remove="MainContent.razor.css" />
+    <None Remove="MyHot100.razor.css" />
+    <None Remove="SpotifyButton.razor.css" />
+    <None Remove="SpotifyButtonSecondary.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Aside.razor.css" />
+    <Content Include="Footer.razor.css" />
+    <Content Include="Header.razor.css" />
     <Content Include="Loading.razor.css" />
+    <Content Include="MainContent.razor.css" />
+    <Content Include="MyHot100.razor.css" />
+    <Content Include="SpotifyButton.razor.css" />
+    <Content Include="SpotifyButtonSecondary.razor.css" />
   </ItemGroup>
 
 

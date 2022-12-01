@@ -1,0 +1,157 @@
+﻿.my-hot-100 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: relative;
+    width: fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0;
+}
+
+.sample {
+    width: 40rem;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.footer-name {
+    position: absolute;
+    left: 2rem;
+    top: 38.8rem;
+    font-size: .7rem;
+    color: #a7a7a7 !important;
+}
+
+.top-items {
+    color: #000;
+    position: absolute;
+    display: flex;
+    gap: 0.2vh;
+    z-index: 10000;
+    top: 13.28rem;
+    flex-direction: column;
+    width: 80%;
+    text-align: left;
+}
+
+.top-item {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: .7rem;
+    height: 2.435rem;
+    align-items: center;
+    padding-left: 0.1rem;
+}
+
+    .top-item span {
+        font-size: .9rem;
+    }
+
+.track-name {
+    width: 13rem;
+    font-weight: bolder;
+    display: flex;
+    min-width: 14vh;
+}
+
+
+@media (max-width: 650px) {
+
+    .example, .sample {
+        width: 30rem !important;
+    }
+
+    .top-item {
+        height: 1.8rem !important;
+    }
+
+        .top-item span {
+            font-size: .75rem !important;
+        }
+
+    .top-items {
+        top: 9.8rem !important;
+    }
+
+    .track-name {
+        width: 10rem !important;
+        min-width: 10rem !important;
+    }
+
+    .footer-name {
+        top: 28.9rem !important;
+    }
+}
+
+
+
+@media (max-width: 500px) {
+
+    .example, .sample {
+        width: 25rem !important;
+    }
+
+    .top-items {
+        top: 8.2rem !important;
+    }
+
+    .top-item {
+        height: 1.485rem !important;
+    }
+
+        .top-item span {
+            font-size: .6rem !important;
+        }
+
+    .track-name {
+        width: 8rem !important;
+        min-width: 8rem !important;
+    }
+
+    .footer-name {
+        top: 44em !important;
+        font-size: .55rem !important;
+        left: 1rem !important;
+    }
+
+    #main-content {
+        gap: 0rem;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .example, .sample {
+        width: 21rem !important;
+    }
+
+    .top-items {
+        top: 6.9rem !important;
+    }
+
+    .top-item {
+        height: 1.23rem !important;
+    }
+
+        .top-item span {
+            font-size: .5rem !important;
+        }
+
+    .track-name {
+        width: 7rem !important;
+        min-width: 7rem !important;
+    }
+
+    .footer-name {
+        top: 45.1em !important;
+        font-size: .45rem !important;
+    }
+}

@@ -1,0 +1,15 @@
+﻿.spotify-btn-sec {
+    background: transparent;
+    padding: 1vh;
+    border-radius: 10vh;
+    color: #16A34A;
+    font-weight: bold;
+    width: 100%;
+    height: 3rem;
+    font-size: 1.2rem;
+    border: .1vh solid #16A34A;
+}
+
+    .spotify-btn-sec:hover {
+        scale: 1.02;
+    }

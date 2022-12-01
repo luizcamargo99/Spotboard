@@ -6,5 +6,9 @@ namespace Spotboard.Shared.Enums;
 public enum EAuthorizationScopes
 {
     [Description("user-top-read")]
-    UserTopRead
+    UserTopRead,
+    [Description("user-read-private")]
+    UserReadPrivate,
+    [Description("user-read-email")]
+    UserReadEmail
 }

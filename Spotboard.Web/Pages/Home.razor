@@ -77,9 +77,9 @@
         _topItemsResponse = await spotifyService.GetTopItemsAsync(itemType: _defaultType, timeRange: _defaultTimeRange, limit: 10);
     }
 
-    async Task SaveImageAsync()
+    async Task SaveImageAsync() 
     {
-        await sreenshotService.DownloadScreenshot(_idSample, "myhot100");
+        await screenshotService.DownloadScreenshot(_idSample, "myhot100");
     }
 
     async Task LogoutAsync()

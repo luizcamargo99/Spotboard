@@ -31,7 +31,7 @@ public class SpotifyService : ISpotifyService
         builder.Append(string.Concat(UrlConstant.AuthBaseUri, UrlConstant.AuthorizeEndpoint));
         builder.Append($"?response_type={EResponseType.Code.ToDescription()}");
         builder.Append($"&client_id={_clientId}");
-        builder.Append($"&scope={EAuthorizationScopes.UserTopRead.ToDescription()}");
+        builder.Append($"&scope={EAuthorizationScopes.UserReadPrivate.ToDescription()} {EAuthorizationScopes.UserReadEmail.ToDescription()} {EAuthorizationScopes.UserTopRead.ToDescription()}");
         builder.Append($"&redirect_uri={UrlConstant.RedirectUri}");
         builder.Append($"&state={new Random().Next(0, 1000000000)}");
         builder.Append("&show_dialog=true");
