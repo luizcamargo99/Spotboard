@@ -44,6 +44,11 @@ a, .btn-link {
     color: #0071c1;
 }
 
+a {
+    text-decoration: underline;
+    color: #fff;
+}
+
     a:active, a:hover {
         color: #16A34A;
     }
