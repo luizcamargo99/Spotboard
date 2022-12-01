@@ -1,7 +1,7 @@
 ﻿namespace Spotboard.Shared.Constants; 
 public static class UrlConstant 
 { 
-    public const string RedirectUri = "https://localhost:7245/home";
+    public const string RedirectUri = "https://spotboard.azurewebsites.net/home";
     public const string AuthBaseUri = "https://accounts.spotify.com";
     public const string APIBaseUri = "https://api.spotify.com/v1";
     public const string GetTokenEndpoint = "/api/token";
