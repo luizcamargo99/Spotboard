@@ -1,19 +1,24 @@
-﻿@using Spotboard.Shared.Data;
-
+﻿
 <div class="my-hot-100" id="@Id">
     <img src="/images/sample.png" class="sample" />
+    <h1 class="time">@Time</h1>
 
     <div class="top-items">
         @foreach (var item in TopItems)
         {
             <div class="top-item">
-                <span class="track-name">@item.Name</span>
+                <span class="track-name">@item.Name</span>              
                 <span>@(string.Join(", ", item.Artists.Select(x => x.Name)?.ToList()))</span>
             </div>
         }
     </div>
 
-    <div class="footer-name">hot 100 | top 10 by @Name</div>
+    <div class="footer-name">
+        <span>hot 100 | top 10 by @Name</span>
+        <span>@(GetSiteName())</span>
+        <span>@($"{GetTodayDateFormatted()}")</span>
+    </div>
+
 </div>
 
 
@@ -26,4 +31,18 @@
 
     [Parameter]
     public string? Id { get; set; }
+
+    [Parameter]
+    public string? Time { get; set; }
+
+    string GetTodayDateFormatted()
+    {
+        return DateTime.Today.ToString("dddd, dd MMMM yyyy", new CultureInfo("en-US"));
+    }
+
+    string GetSiteName()
+    {
+        var site = navigation.BaseUri.Replace("https://", string.Empty);
+        return site.Remove(site.LastIndexOf("/"));
+    }
 }

@@ -1,0 +1,29 @@
+﻿@typeparam T
+
+<div class="wrapper">
+
+    @foreach (var option in ListValues)
+    {
+        <input type="radio" name="@Name" checked="@(option.Key.ToString() == Value?.ToString())" @onchange="async() => { await OnChangeAction(option.Key); }">
+        <label>@(option.Value)</label>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public Dictionary<string, string> ListValues { get; set; } = new();
+
+    [Parameter]
+    public EventCallback<object> OnChange { get; set; }
+
+    [Parameter]
+    public T? Value { get; set; }
+
+    [Parameter]
+    public string Name { get; set; } = new Guid().ToString();
+
+    async Task OnChangeAction(object option)
+    {
+        await OnChange.InvokeAsync(option);
+    }
+}

@@ -1,8 +1,14 @@
 ﻿<header>
-    @ChildContent
+    <span @onclick="BackToIndex">spotboard</span>
 </header>
 
 @code {
-    [Parameter]
-    public RenderFragment? ChildContent { get; set; }
+
+    void BackToIndex()
+    {
+        if (navigation.Uri != navigation.BaseUri)
+        {
+            navigation.NavigateTo("/", forceLoad: true);
+        }
+    }
 }

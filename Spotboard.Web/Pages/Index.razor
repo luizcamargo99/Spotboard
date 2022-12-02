@@ -2,7 +2,6 @@
 @inherits BasePage
 
 <MainContent>
-
     <img src="/images/example.png" class="example" />
     <Aside>
         <h1>Create your Spotify Hot 100</h1>
@@ -10,9 +9,9 @@
         <SpotifyButton OnClick="Authorize">
             SIGN IN WITH SPOTIFY
         </SpotifyButton>
+        <span id="privacy-link">Click <a href="privacy-policy">here</a> to read our privacy policy</span>
     </Aside>
 </MainContent>
-
 
 @code {
     void Authorize()

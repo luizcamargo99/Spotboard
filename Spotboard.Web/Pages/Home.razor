@@ -4,26 +4,28 @@
 <MainContent>
     @if (IsLoading)
     {
-        <div style="display: flex;
-    flex-direction: column;
-    align-items: center;">
+        <div style="display: flex;flex-direction: column;align-items: center;">
             <h2>GENERATING YOUR HOT 100 | TOP 10</h2>
             <Loading />
         </div>
     }
     else if (_topItemsResponse is not null)
     {
-
         <Aside>
             <h1>Hey, @(_userProfile?.DisplayName)!</h1>
-            <h2>
-                Here's your Top 10 for the last month
-            </h2>
+            <h2>Here's your Top 10</h2>
+
+            <span style="text-decoration: underline;">Time Range:</span>
+
+            <RadioButton Value="@_defaultTimeRange"
+                     ListValues="@GetOptionsTimeRange()"
+                     OnChange="@((args)=> OnChangeTimeRangeAsync(args))"
+                     Name="TimeRange">
+            </RadioButton>
 
             <SpotifyButton OnClick="async () => { await SaveImageAsync(); }" Id="save-btn">
                 SAVE IMAGE
             </SpotifyButton>
-
 
             <SpotifyButtonSecondary OnClick="async () => { await LogoutAsync(); }">
                 LOG OUT
@@ -31,7 +33,7 @@
 
         </Aside>
 
-        <MyHot100 TopItems="@_topItemsResponse.Items" Name="@(_userProfile?.DisplayName)" Id="@_idSample" />
+        <MyHot100 TopItems="@_topItemsResponse.Items" Name="@(_userProfile?.DisplayName)" Id="@_idSample" Time="@(_defaultTimeRange.ToDescriptionAux())" />
     }
 </MainContent>
 
@@ -77,14 +79,34 @@
         _topItemsResponse = await spotifyService.GetTopItemsAsync(itemType: _defaultType, timeRange: _defaultTimeRange, limit: 10);
     }
 
-    async Task SaveImageAsync() 
+    Dictionary<string, string> GetOptionsTimeRange()
     {
-        await screenshotService.DownloadScreenshot(_idSample, "myhot100");
+        Dictionary<string, string> optionsTimeRange = new();
+
+        foreach (var item in ETimeRange.GetValues<ETimeRange>())
+            optionsTimeRange.Add(item.ToString(), item.ToDescriptionAux());
+
+        return optionsTimeRange;
+    }
+
+    async Task SaveImageAsync()
+    {
+        await screenshotService.DownloadScreenshot(elementId: _idSample, filename: $"my_hot_100_{_defaultTimeRange.ToDescription()}");
     }
 
     async Task LogoutAsync()
     {
         await authRepository.SaveAsync(null);
         navigationManager.NavigateTo("/", replace: true);
+    }
+
+    async Task OnChangeTimeRangeAsync(object value)
+    {
+        if (value is null)
+            return;
+
+        _defaultTimeRange = value.ToString().ParseEnum<ETimeRange>();
+        await GenerateImageAsync();
+        await InvokeAsync(StateHasChanged);
     }
 }

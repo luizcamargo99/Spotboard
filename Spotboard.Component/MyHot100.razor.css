@@ -27,6 +27,9 @@
     top: 38.8rem;
     font-size: .7rem;
     color: #a7a7a7 !important;
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
 }
 
 .top-items {
@@ -59,9 +62,16 @@
     width: 13rem;
     font-weight: bolder;
     display: flex;
-    min-width: 14vh;
+    min-width: 13rem;
 }
 
+.time {
+    font-family: 'spotboard';
+    top: 0.8rem;
+    position: absolute;
+    font-weight: bold;
+    font-size: 2.2rem;
+}
 
 @media (max-width: 650px) {
 
@@ -87,7 +97,14 @@
     }
 
     .footer-name {
-        top: 28.9rem !important;
+        top: 29.1rem !important;
+        font-size: .55rem;
+        left: 1.5rem;
+    }
+
+    .time {
+        top: 0.5rem;
+        font-size: 1.8rem;
     }
 }
 
@@ -117,13 +134,17 @@
     }
 
     .footer-name {
-        top: 44em !important;
-        font-size: .55rem !important;
+        top: 53.9em !important;
+        font-size: .45rem !important;
         left: 1rem !important;
     }
 
     #main-content {
         gap: 0rem;
+    }
+
+    .time {
+        font-size: 1.4rem;
     }
 }
 
@@ -151,7 +172,11 @@
     }
 
     .footer-name {
-        top: 45.1em !important;
-        font-size: .45rem !important;
+        top: 50.8em !important;
+        font-size: .4rem !important;
+    }
+
+    .time {
+        font-size: 1.1rem;
     }
 }

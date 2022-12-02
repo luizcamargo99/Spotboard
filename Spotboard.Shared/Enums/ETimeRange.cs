@@ -1,12 +1,19 @@
-﻿using System.ComponentModel;
+﻿using Spotboard.Shared.Attributes;
+using System.ComponentModel;
 
 namespace Spotboard.Shared.Enums;
 public enum ETimeRange
 {
-    [Description("long_term")]
-    LongTerm,
-    [Description("medium_term")]
-    MediumTerm,
+
     [Description("short_term")]
-    ShortTerm
+    [DescriptionAux("Last Month")]
+    ShortTerm,
+
+    [Description("medium_term")]
+    [DescriptionAux("Last 6 Months")]
+    MediumTerm,
+
+    [Description("long_term")]
+    [DescriptionAux("All Time")]
+    LongTerm
 }
