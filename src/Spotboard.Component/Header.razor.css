@@ -8,3 +8,7 @@
     font-weight: bold;
     background: #121212;
 }
+
+    header span {
+        cursor: pointer;
+    }

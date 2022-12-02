@@ -1,8 +1,11 @@
-﻿<div id="main-content">
+﻿<div id="main-content" style="flex-direction: @FlexDirection">
     @ChildContent
 </div>
 
 @code {
     [Parameter]
     public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string FlexDirection { get; set; } = "row";
 }
