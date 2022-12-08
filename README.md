@@ -6,8 +6,6 @@
 
 ## 🚀 About this project
 
-In order to control Spotify from an account. With features like pausing music, switching to the next song, and even changing the time of the song and updating on the device that's playing. All this consuming the API of Spotify itself.
-
 Software connected to Spotify API to generate Billboard-like Hot 100 list of a user's most listened songs.
 
 ## 🧑🏻‍💻 Technologies 
